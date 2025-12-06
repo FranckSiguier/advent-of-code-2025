@@ -14,3 +14,9 @@ export async function extractFromOneLine(day: number): Promise<string[]> {
   const text = (await file.text()).split(",");
   return text;
 }
+
+export async function writeLinesToFile(lines: string[], day: number) {
+  const path = `${base_path}/day${day}/output.txt`;
+  const file = Bun.file(path);
+  await file.write(lines.join("\n"));
+}
